@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1></h1>
+  <h2></h2>
+</body>
+<script>
+var dataset = parseFloat(prompt("How long is the dataset"))
+if (dataset % 1 != 0) {
+  alert("This is not a valid dataset number of indexes")
+} else {
+  calculateMedian(dataset)
+}
+function calculateMedian(dataset){
+  var num_array = [], index, median
+  for(var i = 0; i < dataset; i++){
+    num_array.push(parseFloat(prompt("Enter the number")))
+  }
+  num_array.sort(function(a, b){return a-b});
+  if(dataset % 2 == 0){
+    index = dataset / 2
+    median = (num_array[index] + num_array[index-1]) / 2
+  } else {
+    index = (dataset / 2) - 0.5
+    median = num_array[index]
+  }
+  document.querySelector("h1").innerHTML = `The number of the median is <span style="color: red">${median}</span>`
+  document.querySelector("h2").textContent = `This is the array of the numbers ${num_array}`
+}
+</script>
+</html>
